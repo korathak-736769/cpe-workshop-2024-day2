@@ -3,9 +3,11 @@ const app = express();
 const port = 4007;
 const bodyParser = require("body-parser");
 const db = require("./services/db");
+const cors = require('cors')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extends: true }));
+app.use(cors());
 
 app.get("/users", async (req, res) => {
   const result = await db.query("select * from users");
